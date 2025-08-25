@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nhận Diện Phường/Quận</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background-color: #f4f4f4; color: #333; }
+        .container { max-width: 600px; margin: 0 auto; background-color: #fff; padding: 25px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        h1 { text-align: center; color: #0056b3; margin-bottom: 25px; }
+        .input-group { display: flex; gap: 10px; margin-bottom: 20px; }
+        #locationInput { flex-grow: 1; padding: 12px; border: 1px solid #ddd; border-radius: 4px; font-size: 16px; }
+        #identifyButton { padding: 12px 20px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; transition: background-color 0.3s ease; }
+        #identifyButton:hover { background-color: #0056b3; }
+        #result { margin-top: 20px; padding: 15px; border: 1px solid #e0e0e0; border-radius: 6px; background-color: #fafafa; }
+        .success { color: #28a745; font-weight: bold; }
+        .error { color: #dc3545; font-weight: bold; }
+        .warning { color: #ffc107; font-weight: bold; }
+
+        .result-item {
+            margin-bottom: 10px;
+            padding: 8px;
+            background-color: #e9f7ef;
+            border-left: 4px solid #28a745;
+            border-radius: 4px;
+            display: flex; /* Sử dụng flexbox để căn chỉnh */
+            align-items: center; /* Căn giữa các phần tử theo chiều dọc */
+            justify-content: space-between; /* Đẩy nội dung sang trái, nút sang phải */
+            gap: 15px; /* Khoảng cách giữa nhóm thông tin và nút */
+        }
+        
+        .info-group { /* Đảm bảo nhóm thông tin chiếm đủ không gian cần thiết */
+            flex-grow: 1;
+            /* Các dòng thông tin đã tự động xuống dòng nhờ thẻ <br> trong JS */
+        }
+
+        .result-item strong {
+            color: #0056b3;
+            /* margin-right không cần thiết ở đây nữa vì đã có info-group */
+        }
+
+        .no-results { font-style: italic; color: #666; }
+
+        /* CSS cho nút Lưu */
+        .save-button {
+            background-color: #28a744; /* Màu xanh lá */
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+            flex-shrink: 0; /* Ngăn nút co lại khi không gian hẹp */
+            /* margin-left không cần thiết nếu dùng gap trên result-item */
+        }
+        .save-button:hover {
+            background-color: #218838; /* Màu xanh đậm hơn khi di chuột qua */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="input-group">
+            <input type="text" id="locationInput" placeholder="Nhập địa chỉ (ví dụ: Phường An Bình Biên Hòa, Tân Phong Quận 7 TP.HCM)">
+            <button id="identifyButton">Chơi</button>
+        </div>
+        <div id="result">
+            <p class="no-results">Kết quả sẽ hiển thị ở đây.</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
